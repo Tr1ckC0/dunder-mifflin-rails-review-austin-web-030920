@@ -18,6 +18,17 @@ class EmployeesController < ApplicationController
         redirect_to employee_path(@employee)
     end
 
+    def edit
+        @employee = Employee.find(params[:id])
+
+    end
+
+    def update 
+        @employee = Employee.find(params[:id])
+        @employee.update(employee_params)
+        redirect_to employee_path(@employee)
+    end
+
 
     private
 
