@@ -9,12 +9,20 @@ class EmployeesController < ApplicationController
 
     def new
         @employee = Employee.new
-        
     end
 
     def create
-        @employee = employee.new
+        @employee = Employee.new(employee_params)
 
         @employee.save
+        redirect_to employee_path(@employee)
+    end
+
+
+    private
+
+    def employee_params
+        # params.require(:employee).permit(*args)
+        params.require(:employee).permit(:first_name, :last_name, :alias, :title, :office, :dog_id)
     end
 end
